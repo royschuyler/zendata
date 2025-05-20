@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+<main>
+    <section class="service-detail">
+        <h2><%= service.name %></h2>
+        <p><%= service.description %></p>
+        <% if (service.points && service.points.length) { %>
+            <ul>
+                <% service.points.forEach(function(point) { %>
+                    <li><%= point %></li>
+                <% }); %>
+            </ul>
+        <% } %>
+        <a href="/services" class="cta-button">Back to Services</a>
+    </section>
+</main>
+<%- include('../partials/footer') %>

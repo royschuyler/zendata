@@ -1,0 +1,217 @@
+.hero {
+    text-align: center;
+    margin-top: 3rem;
+}
+.tagline {
+    font-size: 1.4rem;
+    margin: 1rem 0 2rem 0;
+    color: #5b6b76;
+}
+.cta-button {
+    display: inline-block;
+    padding: 0.7rem 2rem;
+    border-radius: 1.5rem;
+    background: #1976d2;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    transition: background 0.2s;
+}
+.cta-button:hover {
+    background: #1565c0;
+}
+.features {
+    margin: 4rem 0 2rem 0;
+    text-align: center;
+}
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.feature {
+    background: #f8f9fa;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.about-cta {
+    margin: 3rem 0;
+    text-align: center;
+}
+.about-cta ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+.about-cta li {
+    margin: 0.4rem 0;
+    font-size: 1.07rem;
+}
+@media (max-width: 700px) {
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+    .hero {
+        margin-top: 1.5rem;
+    }
+    .feature, .about-cta {
+        padding: 1rem;
+    }
+}
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #222;
+    font-size: 16px;
+}
+header, main, footer {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+nav a {
+    margin: 0 0.7rem;
+    display: inline-block;
+    padding: 0.5rem 0;
+    color: #1976d2;
+    text-decoration: none;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+/* Responsive grid adjustments */
+@media (max-width: 700px) {
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.about {
+    max-width: 800px;
+    margin: 3rem auto 2rem auto;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.about h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.about-values, .about-experience, .about-cta {
+    margin: 2rem 0 1.5rem 0;
+}
+.about-values ul {
+    padding-left: 1.2rem;
+    margin-top: 0.6rem;
+}
+.about-values li {
+    margin: 0.6rem 0;
+}
+@media (max-width: 700px) {
+    .about {
+        padding: 1rem;
+    }
+}
+.contact {
+    max-width: 500px;
+    margin: 3rem auto 2rem auto;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.contact-form {
+    margin-top: 2rem;
+}
+.form-group {
+    margin-bottom: 1.3rem;
+}
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    resize: vertical;
+    background: #fff;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 0 1.5px #1976d2;
+}
+.cta-button {
+    margin-top: 1rem;
+}
+.contact-alt {
+    margin-top: 2.2rem;
+    text-align: center;
+    color: #5b6b76;
+    font-size: 1.06rem;
+}
+@media (max-width: 700px) {
+    .contact {
+        padding: 1rem;
+    }
+}
+.thank-you {
+    max-width: 500px;
+    margin: 3rem auto 2rem auto;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.thank-you h2 {
+    margin-bottom: 1.2rem;
+}
+.feature-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-radius: 1rem;
+    transition: transform 0.16s cubic-bezier(.24,1.13,.57,1.05), box-shadow 0.2s;
+}
+.feature-card-link:hover .feature,
+.feature-card-link:focus .feature {
+    transform: scale(1.04);
+    box-shadow: 0 4px 24px rgba(25, 118, 210, 0.10);
+    background: #e3f2fd;
+}
+.feature {
+    transition: background 0.2s, box-shadow 0.2s, transform 0.16s cubic-bezier(.24,1.13,.57,1.05);
+}
+.not-found {
+    max-width: 500px;
+    margin: 3rem auto 2rem auto;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.not-found h2 {
+    font-size: 2rem;
+    color: #c62828;
+    margin-bottom: 1rem;
+}
+
+
