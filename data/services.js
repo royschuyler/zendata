@@ -38,6 +38,44 @@ module.exports = [
         ]
     },
     {
+        slug: 'mirth-connect-integration',
+        name: 'Mirth Connect Integration',
+        tagline: 'Expert HL7 and healthcare data integration with Mirth Connect.',
+        icon: `<img src="/images/mirth-logo.png" alt="Mirth Connect logo" class="service-mirth-logo" />`,
+        description: 'Expert HL7 and healthcare data integration with Mirth Connect.',
+        points: [ /* ... */ ], // keep these if you want them on the Services grid
+        detailHtml: `
+            <img src="/images/mirth-logo.png" alt="Mirth Connect logo" class="service-mirth-logo" />
+            <h1>Mirth Connect Integration & HL7 Interface Development</h1>
+            <div class="service-tagline">
+                Expert healthcare data integration, channel development, and support with Mirth Connect.
+            </div>
+            <div class="service-description">
+                <p>
+                    Are you looking for an experienced <strong>Mirth Connect developer</strong> to help with HL7 interfaces, FHIR integration, or healthcare data exchange? Zen Data has deep experience in <strong>Mirth Connect channel development, deployment, and troubleshooting</strong> for hospitals, clinics, labs, and healthcare IT vendors across Nashville and beyond. Whether you need to build new interfaces, migrate data, or optimize your existing Mirth deployment, we can help.
+                </p>
+                <p>
+                    We understand the unique challenges of <strong>healthcare integration</strong>: from HIPAA compliance to reliable HL7, FHIR, CCD, and custom format messaging. Our Nashville-based team provides responsive, expert consulting and hands-on implementation—local or remote—to keep your clinical data flowing smoothly.
+                </p>
+            </div>
+            <div class="service-features">
+                <h3>Our Mirth Connect Services:</h3>
+                <ul>
+                    <li><span class="service-feature-dot"></span>Mirth Connect channel development, deployment & support</li>
+                    <li><span class="service-feature-dot"></span>HL7, FHIR, CCD, X12, and custom interface design</li>
+                    <li><span class="service-feature-dot"></span>Integration with EHR, LIS, RIS, and other healthcare systems</li>
+                    <li><span class="service-feature-dot"></span>Healthcare data mapping, transformation, and routing</li>
+                    <li><span class="service-feature-dot"></span>Performance optimization and troubleshooting</li>
+                    <li><span class="service-feature-dot"></span>Remote or onsite consulting—serving Nashville and nationwide</li>
+                </ul>
+            </div>
+            <div class="service-cta">
+                <a href="/contact" class="cta-button">Request a Mirth Consultation</a>
+                <a href="/services" class="cta-link">Back to all services</a>
+            </div>
+        `
+    },
+    {
         slug: 'seo',
         name: 'SEO',
         tagline: 'Be found first. Grow organic traffic & leads.',
