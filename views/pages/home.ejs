@@ -1,58 +1,74 @@
 <%- include('../partials/header') %>
 <main>
-    <section class="hero">
-        <h2>Zen Data – a software company</h2>
-        <p class="tagline">Modern solutions. Measurable results. Peace of mind.</p>
-        <a href="/services" class="cta-button">See Our Services</a>
+    <section class="hero animated-banner">
+        <div class="banner-bg">
+            <svg viewBox="0 0 1440 400" width="100%" height="100%" preserveAspectRatio="none" class="waves-bg" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;">
+              <defs>
+                <linearGradient id="zenWaveGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1976d2" />
+                  <stop offset="100%" stop-color="#43cea2" />
+                </linearGradient>
+              </defs>
+              <!-- Back wave -->
+              <path id="backWave" fill="url(#zenWaveGradient)" fill-opacity="0.14">
+                <animate attributeName="d" dur="22s" repeatCount="indefinite"
+                  values="
+                    M0,320 Q480,360 1440,280 L1440,400 L0,400 Z;
+                    M0,280 Q700,400 1440,300 L1440,400 L0,400 Z;
+                    M0,320 Q480,360 1440,280 L1440,400 L0,400 Z
+                  " />
+              </path>
+              <!-- Middle wave -->
+              <path id="midWave" fill="url(#zenWaveGradient)" fill-opacity="0.23">
+                <animate attributeName="d" dur="18s" repeatCount="indefinite"
+                  values="
+                    M0,260 Q600,320 1440,220 L1440,400 L0,400 Z;
+                    M0,220 Q800,380 1440,250 L1440,400 L0,400 Z;
+                    M0,260 Q600,320 1440,220 L1440,400 L0,400 Z
+                  " />
+              </path>
+              <!-- Front wave -->
+              <path id="frontWave" fill="url(#zenWaveGradient)" fill-opacity="0.32">
+                <animate attributeName="d" dur="14s" repeatCount="indefinite"
+                  values="
+                    M0,200 Q650,260 1440,180 L1440,400 L0,400 Z;
+                    M0,180 Q900,300 1440,220 L1440,400 L0,400 Z;
+                    M0,200 Q650,260 1440,180 L1440,400 L0,400 Z
+                  " />
+              </path>
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <h2>Zen Data – a software company</h2>
+            <p class="tagline">
+                AI-powered software for a better tomorrow.<br>
+                <span style="font-weight: 500;">Let's build it today.</span>
+            </p>
+            <a href="/services" class="cta-button">See Our Services</a>
+        </div>
     </section>
 
     <section class="features">
         <h3>What We Do</h3>
         <div class="feature-list">
-            <a href="/services/full-stack-web-development" class="feature-card-link">
+            <% services.forEach(function(service) { %>
+            <a href="/services/<%= service.slug %>"
+               class="feature-card-link"
+               aria-label="<%= service.name %> – <%= service.tagline %>"
+               title="<%= service.name %> – <%= service.tagline %>">
                 <div class="feature">
-                    <h4>Full Stack Web Development</h4>
-                    <p>Custom apps & robust platforms built for the future.</p>
+                    <span class="feature-icon"><%- service.icon %></span>
+                    <h4><%= service.name %></h4>
+                    <p><%= service.tagline %></p>
                 </div>
             </a>
-            <a href="/services/e-commerce-development" class="feature-card-link">
-                <div class="feature">
-                    <h4>E-commerce Development</h4>
-                    <p>Sell more with scalable, secure online stores.</p>
-                </div>
-            </a>
-            <a href="/services/seo" class="feature-card-link">
-                <div class="feature">
-                    <h4>SEO</h4>
-                    <p>Be found first. Grow organic traffic & leads.</p>
-                </div>
-            </a>
-            <a href="/services/reporting-automation" class="feature-card-link">
-                <div class="feature">
-                    <h4>Reporting & Automation</h4>
-                    <p>Automate workflows & visualize your business data.</p>
-                </div>
-            </a>
-            <a href="/services/ai-business-intelligence" class="feature-card-link">
-                <div class="feature">
-                    <h4>AI Business Intelligence</h4>
-                    <p>Unlock actionable insights with smart BI bots.</p>
-                </div>
-            </a>
-            <a href="/services/data-integration" class="feature-card-link">
-                <div class="feature">
-                    <h4>Data Integration</h4>
-                    <p>Seamless, compliant data flows—healthcare & beyond.</p>
-                </div>
-            </a>
-            <a href="/services/project-management" class="feature-card-link">
-                <div class="feature">
-                    <h4>Project Management</h4>
-                    <p>Expert leadership from start to finish.</p>
-                </div>
-            </a>
+
+            <% }) %>
         </div>
     </section>
+
+    <hr class="soft-divider">
 
     <section class="about-cta">
         <h3>Why Zen Data?</h3>

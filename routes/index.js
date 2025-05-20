@@ -1,29 +1,25 @@
 const express = require('express');
 const router = express.Router();
+const services = require('../data/services');
+const { body, validationResult } = require('express-validator');
 
+// Home page
 router.get('/', (req, res) => {
-    res.render('pages/home', { title: 'Zen Data - a software company' });
+    res.render('pages/home', {
+        title: 'Zen Data - a software company',
+        services
+    });
 });
 
+// Services overview
 router.get('/services', (req, res) => {
-    res.render('pages/services', { title: 'Our Services | Zen Data' });
+    res.render('pages/services', {
+        title: 'Our Services | Zen Data',
+        services
+    });
 });
 
-router.get('/about', (req, res) => {
-    res.render('pages/about', { title: 'About Zen Data' });
-});
-
-router.get('/contact', (req, res) => {
-    res.render('pages/contact', { title: 'Contact Zen Data' });
-});
-
-// Thank You page route
-router.get('/thank-you', (req, res) => {
-    res.render('pages/thank-you', { title: 'Thank You | Zen Data' });
-});
-
-const services = require('../data/services'); // adjust path if needed
-
+// Service detail (by slug)
 router.get('/services/:slug', (req, res) => {
     const service = services.find(s => s.slug === req.params.slug);
     if (!service) return res.status(404).render('pages/404', { title: 'Service Not Found' });
@@ -33,24 +29,44 @@ router.get('/services/:slug', (req, res) => {
     });
 });
 
-// Service detail: Full Stack Web Development
-router.get('/services/full-stack-web-development', (req, res) => {
-    res.render('pages/service-detail', {
-        title: 'Full Stack Web Development | Zen Data',
-        service: {
-            name: 'Full Stack Web Development',
-            description: 'End-to-end solutions using modern JavaScript frameworks, scalable backends, and cloud infrastructure. We design, build, and maintain robust web apps tailored to your needs.',
-            points: [
-                'Custom web app architecture',
-                'API design and integration',
-                'Responsive UI/UX',
-                'Maintenance & scaling'
-            ]
-        }
-    });
+// About page
+router.get('/about', (req, res) => {
+    res.render('pages/about', { title: 'About Zen Data' });
 });
 
-// Catch-all for undefined routes
+// Contact form (GET)
+router.get('/contact', (req, res) => {
+    res.render('pages/contact', { title: 'Contact Zen Data' });
+});
+
+// Contact form (POST)
+router.post(
+    '/contact',
+    [
+        body('name').trim().isLength({ min: 2 }).withMessage('Name must be at least 2 characters.').escape(),
+        body('email').isEmail().withMessage('Please enter a valid email address.').normalizeEmail(),
+        body('message').trim().isLength({ min: 10 }).withMessage('Message must be at least 10 characters.').escape(),
+    ],
+    (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.render('pages/contact', {
+                title: 'Contact Zen Data',
+                errors: errors.array(),
+                data: req.body
+            });
+        }
+        res.redirect('/thank-you');
+    }
+);
+
+
+// Thank You page
+router.get('/thank-you', (req, res) => {
+    res.render('pages/thank-you', { title: 'Thank You | Zen Data' });
+});
+
+// Catch-all for undefined routes (404)
 router.use((req, res) => {
     res.status(404).render('pages/404', { title: 'Page Not Found' });
 });

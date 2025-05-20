@@ -1,16 +1,30 @@
 <%- include('../partials/header') %>
 <main>
     <section class="service-detail">
-        <h2><%= service.name %></h2>
-        <p><%= service.description %></p>
+        <div class="service-header">
+            <h2><%= service.name %></h2>
+            <p class="service-tagline"><%= service.tagline %></p>
+        </div>
+        <div class="service-description">
+            <p><%= service.description %></p>
+        </div>
         <% if (service.points && service.points.length) { %>
-            <ul>
-                <% service.points.forEach(function(point) { %>
-                    <li><%= point %></li>
-                <% }); %>
-            </ul>
+            <div class="service-features">
+                <h3>Key Features</h3>
+                <ul>
+                    <% service.points.forEach(function(point) { %>
+                        <li>
+                            <span class="service-feature-dot"></span>
+                            <%= point %>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
         <% } %>
-        <a href="/services" class="cta-button">Back to Services</a>
+        <div class="service-cta">
+            <a href="/contact" class="cta-button">Let’s Build Together</a>
+            <a href="/services" class="cta-link">Back to All Services</a>
+        </div>
     </section>
 </main>
 <%- include('../partials/footer') %>

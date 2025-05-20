@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+<main>
+    <section class="services-page">
+        <h2>Our Services</h2>
+        <p class="services-intro">
+            Zen Data offers a full suite of modern solutions to help your business grow, operate efficiently, and make smarter decisions.
+        </p>
+        <div class="services-list">
+            <% services.forEach(function(service, i) { %>
+                <a href="/services/<%= service.slug %>" class="service-block<%= i % 2 === 1 ? ' service-alt' : '' %>" aria-label="<%= service.name %> – <%= service.description %>">
+                    <h3 class="service-heading">
+                        <%= service.name %>
+                        <span class="service-icon-inline"><%- service.icon %></span>
+                    </h3>
+                    <p><%= service.description %></p>
+                </a>
+            <% }) %>
+        </div>
+
+
+    </section>
+</main>
+<%- include('../partials/footer') %>
