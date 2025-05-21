@@ -277,25 +277,55 @@ module.exports = [
       "Long-term support and evolution"
     ]
   },
-  {
-    slug: "project-management",
-    name: "Project Management",
-    tagline: "Expert leadership from start to finish.",
+{
+    slug: 'project-management-launch',
+    name: 'Project Management & Digital Launch',
+    tagline: 'From roadmap to rollout—your idea, expertly launched.',
     icon: `
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <rect x="9" y="2" width="6" height="4" rx="1"/>
-            <path d="M9 4h6"/>
-            <rect x="4" y="6" width="16" height="16" rx="2"/>
-            <path d="M9 14l2 2 4-4"/>
-        </svg>
-        `,
-    description:
-      "Technical leadership and end-to-end project management services to keep your projects on track, on time, and on budget.",
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="service-icon-inline">
+        <rect x="9" y="2" width="6" height="4" rx="1"/>
+        <path d="M9 4h6"/>
+        <rect x="4" y="6" width="16" height="16" rx="2"/>
+        <path d="M9 14l2 2 4-4"/>
+      </svg>
+    `,
+    description: 'Idea in your head? We’ll turn it into a launch-ready project—roadmap, team tools, web presence, and expert support.',
     points: [
-      "Agile methodology",
-      "Clear communication",
-      "Risk management",
-      "Delivery & support"
-    ]
-  }
+        'Project roadmap planning & scope',
+        'JIRA/Atlassian setup and training',
+        'Requirements, milestones & team onboarding',
+        'Website and platform launch',
+        'Agile coaching & delivery management'
+    ],
+    detailHtml: `
+        <h1>Project Management & Digital Launch Services</h1>
+        <div class="service-tagline">
+            Got an idea, but not sure where to start? We’ll help you turn your vision into a launch-ready product.
+        </div>
+        <div class="service-description">
+            <p>
+                Whether you’re a founder with a big idea, a healthcare leader tackling a new initiative, or a business ready to modernize, <strong>Zen Data specializes in getting your project off the ground</strong>. We combine roadmap planning, technical setup, and hands-on leadership—so you can go from brainstorm to launch with total confidence.
+            </p>
+            <p>
+                Our team will work with you to define project goals, create a realistic timeline, and set up the right tools for collaboration. We’ll get you running with <strong>JIRA, Confluence, or Trello</strong>, train your team, and help you set clear milestones and requirements. Need a website or digital platform? We build and deploy it for you—no stress, no wasted time.
+            </p>
+        </div>
+        <div class="service-features">
+            <h3>Our Project Management Services Include:</h3>
+            <ul>
+                <li><span class="service-feature-dot"></span>Roadmap & milestone planning</li>
+                <li><span class="service-feature-dot"></span>JIRA/Atlassian tool setup and training</li>
+                <li><span class="service-feature-dot"></span>Requirements gathering & documentation</li>
+                <li><span class="service-feature-dot"></span>Website and platform development</li>
+                <li><span class="service-feature-dot"></span>Agile/Scrum coaching and best practices</li>
+                <li><span class="service-feature-dot"></span>End-to-end project leadership & support</li>
+            </ul>
+        </div>
+        <div class="service-cta">
+            <a href="/contact" class="cta-button">Kickstart Your Project</a>
+            <a href="/services" class="cta-link">Back to all services</a>
+        </div>
+    `
+}
+
 ];
