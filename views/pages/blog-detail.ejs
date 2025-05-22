@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<main>
+    <section class="blog-post-detail">
+        <h1><%= post.title %></h1>
+        <p class="blog-meta">
+            By <%= post.author || 'Zen Data' %> | <%= post.date %>
+        </p>
+        <article class="blog-content">
+            <%- post.content %>
+        </article>
+        <a href="/blog" class="cta-link">&larr; Back to Blog</a>
+    </section>
+</main>
+<%- include('../partials/footer') %>

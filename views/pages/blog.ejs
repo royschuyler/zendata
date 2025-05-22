@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<main>
+    <section class="blog-index">
+        <h1>Zen Data Blog</h1>
+        <p class="blog-intro">
+            Insights, tips, and best practices on software development, healthcare integration, web design, SEO, and more.
+        </p>
+        <div class="blog-post-list">
+            <% blogPosts.forEach(function(post) { %>
+                <div class="blog-post-summary">
+                    <h2>
+                        <a href="/blog/<%= post.slug %>"><%= post.title %></a>
+                    </h2>
+                    <p class="blog-meta">
+                        <span>By <%= post.author || 'Zen Data' %></span>
+                        <span> | <%= post.date %></span>
+                    </p>
+                    <p><%= post.summary %></p>
+                    <a href="/blog/<%= post.slug %>" class="cta-link">Read more</a>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+</main>
+<%- include('../partials/footer') %>
