@@ -67,6 +67,12 @@ router.post('/contact',
         body('message').trim().isLength({ min: 10 }).escape().withMessage('Message must be at least 10 characters.')
     ],
     (req, res) => {
+        // 🟢 HONEYPOT CHECK
+        if (req.body.website) {
+            // If honeypot field filled, silently redirect to thank you page (no email sent)
+            return res.redirect('/thank-you');
+        }
+
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.render('pages/contact', {

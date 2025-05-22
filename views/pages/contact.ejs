@@ -16,17 +16,21 @@
                     </ul>
                 </div>
             <% } %>
+
+            <!-- Honeypot field for bots (leave blank) -->
+            <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+
             <div class="form-group">
-                <label for="industry">Name</label>
+                <label for="name">Your Name *</label>
                 <input type="text" id="name" name="name" required maxlength="60"
-                  autocomplete="name" autocapitalize="words"
-                  value="<%= typeof data !== 'undefined' ? data.name : '' %>">
+                    autocomplete="name" autocapitalize="words"
+                    value="<%= typeof data !== 'undefined' ? data.name : '' %>">
             </div>
             <div class="form-group">
-                <label for="industry">Email</label>
+                <label for="email">Your Email *</label>
                 <input type="email" id="email" name="email" required maxlength="100"
-                  autocomplete="email"
-                  value="<%= typeof data !== 'undefined' ? data.email : '' %>">
+                    autocomplete="email"
+                    value="<%= typeof data !== 'undefined' ? data.email : '' %>">
             </div>
             <div class="form-group">
                 <label for="industry">Industry (optional)</label>
@@ -42,7 +46,7 @@
 
         <div class="contact-alt">
             <p>
-                Prefer email? Reach us at <a href="info@zendatasolutions.com">info@zendatasolutions.com</a>
+                Prefer email? Reach us at <a href="mailto:info@zendatasolutions.com">info@zendatasolutions.com</a>
             </p>
         </div>
     </section>
