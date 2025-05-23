@@ -4,6 +4,7 @@ const services = require('../data/services');
 const { body, validationResult } = require('express-validator');
 const blogRouter = require('./blog');
 const nodemailer = require('nodemailer');
+const blogPosts = require('../data/blogPosts'); // Skip this if you don’t have blogs
 
 
 // Home page
@@ -139,6 +140,49 @@ ${req.body.message}
     }
 );
 
+// Require your service and blog data
+
+
+// Dynamic sitemap.xml route
+router.get('/sitemap.xml', (req, res) => {
+  // Detect environment or hardcode your base URL:
+  const baseUrl = process.env.BASE_URL || 'https://www.zendatasolutions.com';
+
+  // Static pages
+  let urls = [
+    `${baseUrl}/`,
+    `${baseUrl}/services`,
+    `${baseUrl}/about`,
+    `${baseUrl}/contact`
+  ];
+
+  // Service detail pages
+  if (Array.isArray(services)) {
+    services.forEach(service => {
+      urls.push(`${baseUrl}/services/${service.slug}`);
+    });
+  }
+
+  // Blog post pages (optional)
+  if (blogPosts && Array.isArray(blogPosts)) {
+    blogPosts.forEach(post => {
+      urls.push(`${baseUrl}/blog/${post.slug}`);
+    });
+  }
+
+  // Build the XML
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${urls.map(url => `
+      <url>
+        <loc>${url}</loc>
+      </url>
+    `).join('')}
+  </urlset>`;
+
+  res.header('Content-Type', 'application/xml');
+  res.send(sitemap);
+});
 
 
 // Thank You page
