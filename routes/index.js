@@ -5,6 +5,7 @@ const { body, validationResult } = require('express-validator');
 const blogRouter = require('./blog');
 const nodemailer = require('nodemailer');
 const blogPosts = require('../data/blogPosts'); // Skip this if you don’t have blogs
+const axios = require('axios');
 
 
 // Home page
@@ -67,12 +68,47 @@ router.post('/contact',
         body('email').isEmail().normalizeEmail().withMessage('Please enter a valid email address.'),
         body('message').trim().isLength({ min: 10 }).escape().withMessage('Message must be at least 10 characters.')
     ],
-    (req, res) => {
+    async (req, res) => {
         // 🟢 HONEYPOT CHECK
         if (req.body.website) {
             // If honeypot field filled, silently redirect to thank you page (no email sent)
             return res.redirect('/thank-you');
         }
+        
+    // 🔐 CAPTCHA CHECK
+    const captchaToken = req.body['g-recaptcha-response'];
+    if (!captchaToken) {
+        return res.render('pages/contact', {
+            title: 'Contact Zen Data',
+            errors: [{ msg: 'Please complete the CAPTCHA to prove you’re human.' }],
+            data: req.body
+        });
+    }
+
+    try {
+        const captchaRes = await axios.post('https://www.google.com/recaptcha/api/siteverify', null, {
+            params: {
+                secret: process.env.RECAPTCHA_SECRET_KEY,
+                response: captchaToken
+            }
+        });
+
+        if (!captchaRes.data.success) {
+            return res.render('pages/contact', {
+                title: 'Contact Zen Data',
+                errors: [{ msg: 'CAPTCHA failed. Please try again.' }],
+                data: req.body
+            });
+        }
+    } catch (err) {
+        console.error('CAPTCHA verification failed:', err.message);
+        return res.render('pages/contact', {
+            title: 'Contact Zen Data',
+            errors: [{ msg: 'Error verifying CAPTCHA. Please try again.' }],
+            data: req.body
+        });
+    }
+
 
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

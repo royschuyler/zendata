@@ -41,9 +41,10 @@
                 <label for="message">Message *</label>
                 <textarea id="message" name="message" rows="5" required maxlength="2000"><%= typeof data !== 'undefined' ? data.message : '' %></textarea>
             </div>
+            <div class="g-recaptcha" data-sitekey="6Lc0JlIrAAAAALQ4S31OlCwpFZaKaf2k1hTGhhlE"></div>
             <button type="submit" class="cta-button">Send Message</button>
         </form>
-
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <div class="contact-alt">
             <p>
                 Prefer email? Reach us at <a href="mailto:info@zendatasolutions.com">info@zendatasolutions.com</a>

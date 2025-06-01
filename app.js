@@ -12,7 +12,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use('/blog', blogRouter);
-app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+  useDefaults: true,
+  directives: {
+    "script-src": ["'self'", "https://www.google.com", "https://www.gstatic.com"],
+    "frame-src": ["'self'", "https://www.google.com"],
+    "connect-src": ["'self'", "https://www.google.com"],
+  }
+}));
+
 
 const indexRoutes = require('./routes/index');
 app.use('/', indexRoutes);
